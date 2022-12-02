@@ -136,7 +136,8 @@ library
     bytestring       >= 0.10.4 && < 0.12,
     deepseq          >= 1.1 && < 1.5,
     ghc-prim         >= 0.2 && < 0.9,
-    template-haskell >= 2.5 && < 2.19
+    template-haskell >= 2.5 && < 2.19,
+    text
 
   ghc-options: -Wall -fwarn-tabs -funbox-strict-fields -O2
   if flag(developer)

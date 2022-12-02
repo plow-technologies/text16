@@ -51,6 +51,7 @@ module Data.Text16.Lazy
     , unpack
     , singleton
     , empty
+    , fromText2
     , fromChunks
     , toChunks
     , toStrict
@@ -212,6 +213,7 @@ import Data.Binary (Binary(get, put))
 import Data.Monoid (Monoid(..))
 import Data.Semigroup (Semigroup(..))
 import Data.String (IsString(..))
+import qualified Data.Text.Lazy as T2
 import qualified Data.Text16 as T
 import qualified Data.Text16.Internal as T
 import qualified Data.Text16.Internal.Fusion.Common as S
@@ -1764,3 +1766,7 @@ intToInt64 = fromIntegral
 
 int64ToInt :: Int64 -> Exts.Int
 int64ToInt = fromIntegral
+
+fromText2 :: T2.Text -> Text16
+fromText2 = pack . T2.unpack
+{-# INLINE fromText2 #-}

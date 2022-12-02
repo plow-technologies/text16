@@ -54,6 +54,7 @@ module Data.Text16
     , unpack
     , singleton
     , empty
+    , fromText2
 
     -- * Basic interface
     , cons
@@ -218,6 +219,7 @@ import Data.Binary (Binary(get, put))
 import Data.Monoid (Monoid(..))
 import Data.Semigroup (Semigroup(..))
 import Data.String (IsString(..))
+import qualified Data.Text as T2
 import qualified Data.Text16.Internal.Fusion as S
 import qualified Data.Text16.Internal.Fusion.Common as S
 import Data.Text16.Encoding (decodeUtf8', encodeUtf8)
@@ -1880,6 +1882,11 @@ copy (Text16 arr off len) = Text16 (A.run go) 0 len
       marr <- A.new len
       A.copyI marr 0 arr off len
       return marr
+
+
+fromText2 :: T2.Text -> Text16
+fromText2 = pack . T2.unpack
+{-# INLINE fromText2 #-}
 
 
 -------------------------------------------------
